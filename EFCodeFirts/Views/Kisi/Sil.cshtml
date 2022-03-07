@@ -1,0 +1,32 @@
+﻿@model Kisiler
+@{
+    ViewBag.Title = "Kişi Sil";
+}
+
+<h2>Kişi Sil</h2>
+<hr />
+
+<p>Aşağıdaki kişi silinecektir.</p>
+
+@using (Html.BeginForm())
+            {
+<table>
+    <tr>
+        <td><b>Kişi Ad:</b></td>
+        <td>@Model.Ad</td>
+    </tr>
+    <tr>
+        <td><b>Kişi Soyad:</b></td>
+        <td>@Model.Soyad</td>
+    </tr>
+    <tr>
+        <td><b>Yaş:</b></td>
+        <td>@Model.yas</td>
+    </tr>
+</table>
+<div>
+    <input type="submit" value="Sil" class="btn btn-primary" />
+</div>
+            }
+
+

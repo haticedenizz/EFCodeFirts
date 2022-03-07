@@ -1,0 +1,51 @@
+﻿@using EFCodeFirts.Models
+@model KisilerveAdresler
+@{
+    ViewBag.Title = "Home Page";
+}
+<h3>Home Page</h3>
+<div class="container-fluid">
+    <div class="col-md-6">
+        <div>
+            @Html.ActionLink("Yeni Kişi", "Yeni","Kisi",null, new { @class = "btn btn-primary" }) <br />
+        </div>
+
+        <h4>Kişiler</h4>
+        <ul class="list-group">
+
+            @foreach (var kisi in Model.Kisiler)
+            {
+
+            <li class="list-group-item ">
+                @Html.ActionLink("Düzenle", "Duzenle", "Kisi", new { kisiid=kisi.ID}, new { @class = "btn btn-warning btn-xs" }) 
+                @Html.ActionLink("Sil", "Sil", "Kisi", new { kisiid = kisi.ID}, new { @class = "btn btn-primary btn-xs" }) 
+                <span class="glyphicon glyphicon-user green"></span>
+                @(kisi.Ad+" "+kisi.Soyad)
+
+                (<i>@kisi.yas</i>)
+            </li>
+
+                }
+            </ul>
+    </div>
+    <div class="col-md-6">
+        <div>
+            @Html.ActionLink("Yeni Adres", "Yeni", "Adres",null, new { @class = "btn btn-primary" }) <br />
+        </div>
+        <ul class="list-group">
+            <h4>Adresler</h4>
+            @foreach (var adres in Model.Adresler)
+            {
+
+        <li class="list-group-item">
+            @Html.ActionLink("Düzenle", "Duzenle", "Adres", new { adresid = adres.ID}, new { @class = "btn btn-warning btn-xs" }) 
+            @Html.ActionLink("Sil", "Sil", "Adres", new { adresid = adres.ID }, new { @class = "btn btn-primary btn-xs" }) 
+            <span class="glyphicon glyphicon-home goldenrod"></span>
+            @adres.AdresTanim
+            (<i>@(adres.Kisi.Ad+" "+adres.Kisi.Soyad)</i>)<br />
+        </li>
+
+            }
+        </ul>
+    </div>
+</div>
